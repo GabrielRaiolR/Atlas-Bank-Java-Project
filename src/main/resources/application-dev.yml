@@ -1,0 +1,32 @@
+# Perfil dev — PostgreSQL na sua máquina (sem Docker).
+# Crie o banco uma vez: CREATE DATABASE atlasbank;
+#
+# Obrigatório: defina DB_PASSWORD no ambiente (não coloque senha neste arquivo).
+#
+# PowerShell (mesma janela antes de mvn ou do IDE):
+#   $env:DB_URL = "jdbc:postgresql://localhost:5432/atlasbank"
+#   $env:DB_USER = "postgres"
+#   $env:DB_PASSWORD = "sua-senha"
+# Senha com caractere #: use aspas simples:
+#   $env:DB_PASSWORD = '#sua-senha-com-#'
+#
+# IntelliJ: Run > Edit Configurations > Environment variables
+#   DB_PASSWORD=...  (e opcionalmente DB_URL, DB_USER)
+#
+# Docker (quando quiser): na pasta do projeto, "docker compose up -d" e então:
+#   $env:DB_USER = "atlas"; $env:DB_PASSWORD = "atlas"
+#
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/atlasbank}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD}
+
+logging:
+  level:
+    com.atlasbank: DEBUG
+    org.hibernate.SQL: INFO
+
+atlas:
+  jwt:
+    secret: changeit-32chars-minimum-changeit-32
