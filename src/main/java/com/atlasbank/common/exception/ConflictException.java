@@ -1,4 +1,8 @@
 package com.atlasbank.common.exception;
 
-public class ConflictException {
+public class ConflictException extends BusinessException {
+
+    public ConflictException(String message) {
+        super("CONFLICT", message);
+    }
 }
