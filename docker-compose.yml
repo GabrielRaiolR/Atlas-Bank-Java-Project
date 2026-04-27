@@ -6,8 +6,9 @@ services:
       POSTGRES_DB: atlasbank
       POSTGRES_USER: atlas
       POSTGRES_PASSWORD: atlas
+    # Host 5433 evita colisão com PostgreSQL instalado localmente no Windows (porta 5432).
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - atlas-pgdata:/var/lib/postgresql/data
     healthcheck:

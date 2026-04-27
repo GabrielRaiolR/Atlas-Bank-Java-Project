@@ -56,3 +56,8 @@ server:
   port: 8080
   compression:
     enabled: true
+
+atlas:
+  jwt:
+        secret: ${ATLAS_JWT_SECRET:changeit-32chars-minimum-changeit-32}
+        expiration-minutes: 60
