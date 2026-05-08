@@ -29,6 +29,10 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/customers/**").hasAnyRole("ADMIN", "CUSTOMER")
                         .requestMatchers("/api/v1/accounts/**").hasAnyRole("ADMIN", "CUSTOMER")
                         .requestMatchers("/api/v1/transfers/**").hasAnyRole("ADMIN", "CUSTOMER")
+                        .requestMatchers("/api/v1/cards/**").hasAnyRole("ADMIN", "CUSTOMER")
+                        .requestMatchers("/api/v1/invoices/**").hasAnyRole("ADMIN", "CUSTOMER")
+                        .requestMatchers("/api/v1/cards/*/invoices").hasAnyRole("ADMIN", "CUSTOMER")
+                        .requestMatchers("/api/v1/cards/**").hasAnyRole("ADMIN", "CUSTOMER")
                         .anyRequest().authenticated()
                 ).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

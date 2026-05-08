@@ -5,7 +5,6 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,5 +24,5 @@ public class AuthController {
 
     public record LoginRequest(@NotBlank @Email String email, @NotBlank String password) {
     }
-    public record LoginResponse(String acessToken, String tokenType, long expiresInMinutes) {}
+    public record LoginResponse(String accessToken, String tokenType, long expiresInMinutes) {}
 }
